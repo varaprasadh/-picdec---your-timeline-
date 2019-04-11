@@ -1,28 +1,42 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+     <div class=header>
+       <div class="label">#PicDec</div>
+     </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import LoginScreen from './screens/loginScreen.vue';
+import MainScreen from './screens/mainScreen.vue';
+
+
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  components:{
+    LoginScreen,
+    MainScreen
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body::-webkit-scrollbar{
+  /* overflow: hidden; */
+  width:5px;
+}
+.header{
+  padding: 20px;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-weight: bold;
+  filter: drop-shadow(5px 5px 10px black);
+  background: white;
 }
 </style>
