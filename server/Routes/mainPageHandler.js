@@ -9,15 +9,15 @@ const Router=express.Router();
 
 Router.post('/upload',(req,res)=>{
     var file=req.files[0];
-    
+    var body=req.body;
     var path=file.path;
     var post=new Post({
-        name:'bean1',
+        name:body.name,
         img:{  
             data:fs.readFileSync(path),
             contentType:'image/png'
         },
-        desc:'some dummy text'
+        desc:body.desc
     })
     
     post.save().then(()=>{

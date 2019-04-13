@@ -40,7 +40,12 @@ export default {
         
         
         changeTab:function(curtab){
-            this.tab=(this.tab=='signin' && curtab!='signin')?'signup':'signin'
+            if(this.tab=='signin' && curtab!='signin'){
+               this.tab='signup'
+            }else if(this.tab=='signup' && curtab!='signup'){
+                 this.tab='signin'
+            }
+           
         },
         checkUname(){
             //find in db and set
@@ -74,6 +79,21 @@ export default {
                 }
                 else{
                   //create user then sign into the page
+                 axios.post(url+'/signup',{
+                       name:this.username,
+                       password:this.password
+                  }).then(res=>{
+                      console.log(res)
+                      if(res.data.created){
+                          localStorage.setItem('auth',JSON.stringify({
+                              name:this.username,
+                              password:this.password
+                          }))
+                          this.$router.push('/user');
+                      }else{
+                          alert('user might be there already');
+                      }
+                  })
                 }
            }
         }

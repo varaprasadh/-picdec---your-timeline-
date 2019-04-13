@@ -4,7 +4,7 @@
       <Uploader/>
    </div>
    <div class="stories">
-    <Story :key='post.desc' v-for='post in posts' :post='post'/>
+    <Story :key='i' v-for='(post,i) in posts' :post='post'/>
 
    </div>     
   </div>    
@@ -54,6 +54,8 @@ export default {
     grid-gap: 20px;
     width: 100%;
     height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
 }
 .stories::-webkit-scrollbar{
     display: none;
